@@ -14,7 +14,8 @@ const TX_OUTPUT_SIZE = {
 }
 
 function inputBytes (input) {
-  return TX_INPUT_SIZE[input.type] || TX_INPUT_SIZE.LEGACY
+  // TODO: classify input types
+  return TX_INPUT_SIZE[input.type] || TX_INPUT_SIZE.BECH32
 }
 
 function outputBytes (output) {
