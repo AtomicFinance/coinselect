@@ -1,6 +1,6 @@
 {
-  "name": "coinselect",
-  "version": "3.1.11",
+  "name": "@atomicfinance/coinselect",
+  "version": "3.1.13",
   "description": "A transaction input selection module for bitcoin.",
   "keywords": [
     "coinselect",
@@ -16,9 +16,9 @@
     "optimizing",
     "bitcoin"
   ],
-  "homepage": "https://github.com/dcousens/coinselect",
+  "homepage": "https://github.com/atomicfinance/coinselect",
   "bugs": {
-    "url": "https://github.com/dcousens/coinselect/issues"
+    "url": "https://github.com/atomicfinance/coinselect/issues"
   },
   "license": "MIT",
   "author": "Daniel Cousens",
@@ -33,7 +33,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dcousens/coinselect.git"
+    "url": "https://github.com/atomicfinance/coinselect.git"
   },
   "scripts": {
     "coverage": "nyc --check-coverage --branches 100 --functions 100 tape test/*.js",

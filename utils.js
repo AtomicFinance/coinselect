@@ -1,13 +1,13 @@
 // baseline estimates, used to improve performance
-var TX_BASE_SIZE = 10
+const TX_BASE_SIZE = 10
 
-var TX_INPUT_SIZE = {
+const TX_INPUT_SIZE = {
   LEGACY: 148,
   P2SH: 92,
   BECH32: 69
 }
 
-var TX_OUTPUT_SIZE = {
+const TX_OUTPUT_SIZE = {
   LEGACY: 34,
   P2SH: 32,
   BECH32: 31
@@ -48,19 +48,19 @@ function sumOrNaN (range) {
   return range.reduce(function (a, x) { return a + uintOrNaN(x.value) }, 0)
 }
 
-var BLANK_OUTPUT = outputBytes({})
+const BLANK_OUTPUT = outputBytes({})
 
 function finalize (inputs, outputs, feeRate) {
-  var bytesAccum = transactionBytes(inputs, outputs)
-  var feeAfterExtraOutput = feeRate * (bytesAccum + BLANK_OUTPUT)
-  var remainderAfterExtraOutput = sumOrNaN(inputs) - (sumOrNaN(outputs) + feeAfterExtraOutput)
+  const bytesAccum = transactionBytes(inputs, outputs)
+  const feeAfterExtraOutput = feeRate * (bytesAccum + BLANK_OUTPUT)
+  const remainderAfterExtraOutput = sumOrNaN(inputs) - (sumOrNaN(outputs) + feeAfterExtraOutput)
 
   // is it worth a change output?
   if (remainderAfterExtraOutput > dustThreshold({}, feeRate)) {
     outputs = outputs.concat({ value: remainderAfterExtraOutput })
   }
 
-  var fee = sumOrNaN(inputs) - sumOrNaN(outputs)
+  const fee = sumOrNaN(inputs) - sumOrNaN(outputs)
   if (!isFinite(fee)) return { fee: feeRate * bytesAccum }
 
   return {
